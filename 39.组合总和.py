@@ -14,13 +14,14 @@ class Solution:
     ) -> List[List[int]]:
         def dfs(start, path, target):
             if target == 0:
-                res.append(path)
+                res.append(path[:])
                 return
             for i in range(start, size):
-                last = target - candidates[i]
-                if last < 0:
+                if candidates[i] > target:
                     break
-                dfs(i, path + [candidates[i]], last)
+                path.append(candidates[i])
+                dfs(i, path, target - candidates[i])
+                path.pop()
 
         candidates.sort()
 

@@ -17,7 +17,7 @@ repos:
     rev: 4.0.1
     hooks:
       - id: flake8
-        args: ["--ignore=E203, E266, E402, E501, W503, W504, B950, F405, F403, C901, F401, E741"]
+        args: ["--ignore=E203, E266, E402, E501, W503, W504, B950, F405, F403, C901, F401, E741, F841"]
 
   - repo: https://github.com/psf/black
     rev: 22.6.0

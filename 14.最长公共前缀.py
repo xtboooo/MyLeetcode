@@ -42,9 +42,6 @@ class Solution:
         return longest_common_prefix
 
 
-# @lc code=end
-
-
 # 横向
 class Solution1:
     def longestCommonPrefix(self, strs: List[str]) -> str:
@@ -122,3 +119,6 @@ class Solution4:
                 high = mid - 1
 
         return strs[0][:low]
+
+
+# @lc code=end

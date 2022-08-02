@@ -12,7 +12,7 @@ from typing import List
 class Solution1:
     """
     T(n) = O(n**2)
-    S(n) = O(n*(n+1)/2)
+    S(n) = O(n**2)
     """
 
     def getRow(self, rowIndex: int) -> List[int]:

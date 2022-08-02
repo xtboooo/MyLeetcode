@@ -11,8 +11,8 @@ from typing import List
 # 完整构建
 class Solution1:
     """
-    T(n) = n**2
-    S(n) = n*(n+1)/2
+    T(n) = O(n**2)
+    S(n) = O(n*(n+1)/2)
     """
 
     def getRow(self, rowIndex: int) -> List[int]:
@@ -31,8 +31,8 @@ class Solution1:
 # 2d dp
 class Solution2:
     """
-    T(n) = n**2
-    S(n) = n*(n+1)/2
+    T(n) = O(n**2)
+    S(n) = O(n*(n+1)/2)
     """
 
     def getRow(self, rowIndex: int) -> List[int]:
@@ -46,8 +46,8 @@ class Solution2:
 # # 1d dp
 class Solution3:
     """
-    T(n) = n**2
-    S(n) = n
+    T(n) = O(n**2)
+    S(n) = O(n)
     """
 
     def getRow(self, rowIndex: int) -> List[int]:

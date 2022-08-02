@@ -25,7 +25,12 @@ from typing import List
 
 
 # dfs
-class Solution:
+class Solution1:
+    """
+    T(n) = O(m*n)
+    S(n) = O(m*n)
+    """
+
     def solve(self, board: List[List[str]]) -> None:
         """
         Do not return anything, modify board in-place instead.
@@ -50,6 +55,81 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 board[i][j] = "O" if board[i][j] == "#" else "X"
+
+
+# bfs
+class Solution2:
+    """
+    T(n) = O(m*n)
+    S(n) = O(m*n)
+    """
+
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        m, n = len(board), len(board[0])
+
+        def bfs(x, y):
+            import collections
+
+            q = collections.deque()
+            q.append((x, y))
+            while q:
+                x, y = q.pop()
+                if 0 <= x < m and 0 <= y < n and board[x][y] == "O":
+                    board[x][y] = "#"
+                    for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                        q.appendleft((x + dx, y + dy))
+
+        for i in range(m):
+            bfs(i, 0)  # 第一列
+            bfs(i, n - 1)  # 最后一列
+        for j in range(1, n - 1):
+            bfs(0, j)  # 第一行
+            bfs(m - 1, j)  # 最后一行
+        for i in range(m):
+            for j in range(n):
+                board[i][j] = "O" if board[i][j] == "#" else "X"
+
+
+# 查并集 (测试不太行 280ms) https://blog.csdn.net/weixin_43455338/article/details/106143255
+class Solution3:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        f = {}
+
+        def find(x):
+            f.setdefault(x, x)
+            if f[x] != x:
+                f[x] = find(f[x])
+            return f[x]
+
+        def union(x, y):
+            f[find(y)] = find(x)
+
+        m = len(board)
+        n = len(board[0])
+        if not m or not n:
+            return
+        dummy = m * n
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == "O":
+                    if i == 0 or i == m - 1 or j == 0 or j == n - 1:
+                        union(i * n + j, dummy)
+                    else:
+                        for x, y in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+                            if board[i + x][j + y] == "O":
+                                union(i * n + j, (i + x) * n + (j + y))
+        for i in range(m):
+            for j in range(n):
+                if find(dummy) == find(i * n + j):
+                    board[i][j] = "O"
+                else:
+                    board[i][j] = "X"
 
 
 # @lc code=end

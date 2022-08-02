@@ -33,7 +33,7 @@ from typing import List
 class Solution1:
     """
     T(n) = O(n**2)
-    T(n) = O(1)
+    S(n) = O(1)
     """
 
     def maxProfit(self, prices: List[int]) -> int:
@@ -48,7 +48,7 @@ class Solution1:
 class Solution2:
     """
     T(n) = O(n)
-    T(n) = O(n)
+    S(n) = O(n)
     """
 
     def maxProfit(self, prices: List[int]) -> int:
@@ -67,7 +67,7 @@ class Solution2:
 class Solution3:
     """
     T(n) = O(n)
-    T(n) = O(1)
+    S(n) = O(1)
     """
 
     def maxProfit(self, prices: List[int]) -> int:

@@ -15,7 +15,7 @@ class MyStack:
         n = len(self.q)
         self.q.append(x)
         for _ in range(n):
-            self.q.appned(self.q.popleft())
+            self.q.append(self.q.popleft())
 
     def pop(self) -> int:
         return self.q.popleft()

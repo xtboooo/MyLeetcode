@@ -45,6 +45,11 @@ def guess(num: int) -> int:
 
 # 二分法
 class Solution:
+    """
+    T(n) = O(log n)
+    S(n) = O(1)
+    """
+
     def guessNumber(self, n: int) -> int:
         l, r = 1, n
         while l < r:

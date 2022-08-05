@@ -7,8 +7,6 @@
 # @lc code=start
 
 # 贪心
-
-
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         import collections

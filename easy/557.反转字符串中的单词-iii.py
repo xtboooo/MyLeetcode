@@ -21,7 +21,7 @@
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-        return " ".join(list(map(lambda x: "".join(reversed(x)), s.split())))
+        return " ".join(word[::-1] for word in s.split())
 
 
 # @lc code=end

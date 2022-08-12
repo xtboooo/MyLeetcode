@@ -400,3 +400,12 @@ print("".join(map(lambda x: str(x[2]), lst)))
         22:41:08.23
       时间相同保持输入顺序
 """
+n = int(input())
+time_dict = {i: input() for i, _ in enumerate(range(n))}
+time_list = (time.split(":") for time in time_dict.values())
+d = {}
+for i, (h, m, s) in enumerate(time_list):
+    d[i] = 60 * 60 * int(h) + 60 * int(m) + float(s)
+index_list = map(lambda y: y[0], sorted(d.items(), key=lambda x: x[1]))
+for index in index_list:
+    print(time_dict[index])

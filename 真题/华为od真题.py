@@ -875,3 +875,40 @@ for i, ch in enumerate(s_sorted):
         s[indexes[-1]], s[i] = s[i], ch
         break
 print("".join(s))
+
+
+"""
+    定义当一个字符串只有元音字母(a,e,i,o,u,A,E,I,O,U)组成,
+    称为元音字符串，现给定一个字符串，请找出其中最长的元音字符串，
+    并返回其长度，如果找不到请返回0，
+    字符串中任意一个连续字符组成的子序列称为该字符串的子串
+
+    输入描述：
+      一个字符串其长度 0<length ,字符串仅由字符a-z或A-Z组成
+    输出描述：
+      一个整数，表示最长的元音字符子串的长度
+
+    示例1：
+      输入
+        asdbuiodevauufgh
+      输出
+        3
+      说明：
+        最长的元音字符子串为uio和auu长度都为3，因此输出3
+"""
+s = input()
+alpha = ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U")
+dp = [0] * len(s)
+j = -1
+for i in range(len(s)):
+    if s[i] in alpha:
+        if j == -1:
+            j = i
+        if i == 0:
+            dp[i] = max(1, i - j + 1)
+        else:
+            dp[i] = max(dp[i - 1], i - j + 1)
+    else:
+        dp[i] = max(dp[i - 1], 0)
+        j = -1
+print(max(dp))

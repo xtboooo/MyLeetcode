@@ -838,3 +838,40 @@ for i in range(n):
             l, r = nums[i], nums[j]
 if min_value != float("inf"):
     print(f"{l} {r} {min_value}")
+
+"""
+    给定一个字符串S
+
+    变化规则:
+        交换字符串中任意两个不同位置的字符
+
+    输入描述：
+        一串小写字母组成的字符串
+    输出描述：
+        按照要求变换得到最小字符串
+
+    实例1：
+        输入：、
+        abcdef
+    输出
+        abcdef
+
+    实例2：
+        输入
+        bcdefa
+        输出
+        acdefb
+
+    s都是小写字符组成
+    1<=s.length<=1000
+"""
+s = list(input())
+s_sorted = sorted(s)
+for i, ch in enumerate(s_sorted):
+    if ch == s[i]:
+        continue
+    else:
+        indexes = [i for i, c in enumerate(s) if ch == c]
+        s[indexes[-1]], s[i] = s[i], ch
+        break
+print("".join(s))

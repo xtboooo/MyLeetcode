@@ -196,3 +196,81 @@ if t.find(p) != -1:
     print(t.find(p) + 1)
 else:
     print("No")
+
+
+"""
+公司用一个字符串来标识员工的出勤信息
+
+  absent:    缺勤
+  late:      迟到
+  leaveearly:早退
+  present:   正常上班
+
+  现需根据员工出勤信息,判断本次是否能获得出勤奖,
+  能获得出勤奖的条件如下：
+      1.缺勤不超过1次
+      2.没有连续的迟到/早退
+      3.任意连续7次考勤 缺勤/迟到/早退 不超过3次
+
+   输入描述：
+    用户的考勤数据字符串记录条数  >=1
+    输入字符串长度 <10000 ;
+    不存在非法输入
+    如：
+     2
+     present
+     present absent present present leaveearly present absent
+
+    输出描述：
+    根据考勤数据字符串
+    如果能得到考勤奖输出true否则输出false
+    对于输出示例的结果应为
+     true false
+
+    示例一：
+     输入：
+      2
+      present
+      present present
+
+     输出：
+      true true
+
+    示例二
+     输入：
+      2
+      present
+      present absent present present leaveearly present absent
+     输出：
+      true false
+"""
+
+n = int(input())
+s_list = (input().split() for _ in range(n))
+ans = []
+for lst in s_list:
+    if lst.count("absent") > 1:
+        ans.append("false")
+        continue
+    for i in range(len(lst) - 1):
+        a, b = lst[i], lst[i + 1]
+        if a in ["late", "leaveearly"] and b in ["late", "leaveearly"]:
+            ans.append("false")
+            break
+    else:
+        for i in range(len(lst) - 6):
+            tmp = lst[i, i + 7]
+            d = e = f = 0
+            for j in tmp:
+                if j == "absent":
+                    d += 1
+                elif j == "late":
+                    e += 1
+                elif j == "leaveearly":
+                    f += 1
+            if d + e + f > 3:
+                ans.append("false")
+                break
+        else:
+            ans.append("true")
+print(" ".join(ans))
